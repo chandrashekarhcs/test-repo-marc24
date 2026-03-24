@@ -1,0 +1,186 @@
+Got it — you want a **clean, copy-friendly version** (no stars, no emojis, no fancy formatting). Here it is:
+
+---
+
+DEVOPS + LINUX CHEAT SHEET PDF
+Download: sandbox:/mnt/data/devops_linux_cheatsheet.pdf
+
+---
+
+DEVOPS INTERVIEW QUESTIONS (Beginner to Intermediate)
+
+---
+
+EC2 / CLOUD
+
+1. What is EC2?
+   Virtual server in AWS (Elastic Compute Cloud)
+
+2. What is AMI?
+   Pre-configured OS image used to launch instances
+
+3. What happens if EC2 is stopped vs terminated?
+   Stop: can restart, data persists
+   Terminate: deleted permanently
+
+4. What is key pair?
+   Used for secure SSH login (.pem file)
+
+---
+
+LINUX BASICS
+
+5. What is Linux?
+   Open-source OS, CLI-based, widely used in servers
+
+6. What is Shell?
+   Interface between user and kernel
+
+7. Difference between Shell and Kernel?
+   Shell: takes commands
+   Kernel: executes using hardware
+
+---
+
+FILE SYSTEM
+
+8. What is root directory?
+   / (top of filesystem)
+
+9. Difference between absolute and relative path?
+   Absolute: starts with /
+   Relative: from current directory
+
+---
+
+COMMANDS
+
+10. Difference between rm -f and rm -rf?
+    -f: file
+    -rf: directory (recursive)
+
+11. What does ls -lrt do?
+    l: detailed
+    r: reverse
+    t: time sorted
+
+---
+
+PERMISSIONS
+
+12. What is 755?
+    Owner: full (7)
+    Group: read + execute (5)
+    Others: read + execute (5)
+
+13. What is chmod?
+    Change file permissions
+
+14. What is chown?
+    Change ownership
+
+---
+
+PROCESS MANAGEMENT
+
+15. What is a process?
+    Running program
+
+16. How to check processes?
+    ps aux
+    top
+
+17. How to kill process?
+    kill -9 PID
+
+---
+
+NETWORKING
+
+18. What is SSH?
+    Secure login protocol
+
+19. Default SSH port?
+    22
+
+20. Difference between HTTP and HTTPS?
+    HTTP: 80 (not secure)
+    HTTPS: 443 (secure)
+
+---
+
+USER MANAGEMENT
+
+21. Difference between root and normal user?
+    Root: full access
+    Normal: limited
+
+22. How to create user?
+    useradd user
+    passwd user
+
+---
+
+SHELL SCRIPTING
+
+23. What is shell script?
+    File containing commands for automation
+
+24. What is shebang?
+    #!/bin/bash
+    Defines interpreter
+
+25. What are positional parameters?
+    $1, $2, $3
+
+---
+
+CONDITIONS AND LOOPS
+
+26. What is if condition?
+    Decision making
+
+27. Numeric operators?
+    -eq, -gt, -lt
+
+28. Types of loops?
+    for loop
+    while loop
+
+---
+
+DEVOPS CORE
+
+29. What is DevOps?
+    Culture combining development and operations
+
+30. Why Linux is important in DevOps?
+    Most servers run Linux
+
+31. What is automation?
+    Using scripts and tools to reduce manual work
+
+---
+
+SCENARIO QUESTIONS
+
+32. Disk is full. What will you do?
+    Check: df -kh
+    Identify logs and temp files
+    Clean /tmp and logs
+
+33. Service not working?
+    Check: systemctl status service
+    Restart: systemctl restart service
+
+34. Server not reachable?
+    Check ping
+    Check SSH port
+    Check security group
+
+35. File not found but exists?
+    Check case sensitivity
+    Check path
+    Check permissions
+
+

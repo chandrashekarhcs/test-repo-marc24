@@ -1,0 +1,714 @@
+DEVOPS + LINUX NOTES (STRUCTURED)
+
+---
+
+## DAY 2 — AWS EC2 AND SERVER BASICS
+
+### What is a Server
+
+The following terms usually mean the same:
+
+* Server
+* Virtual Machine (VM)
+* EC2 Instance
+* Machine
+
+In AWS, it is called an EC2 Instance.
+
+---
+
+### What is EC2
+
+* EC2 stands for Elastic Compute Cloud
+* AWS provides virtual servers on rent
+* You are charged only when the instance is running
+
+---
+
+### Free Tier
+
+* 750 hours per month
+* 1 GB RAM
+* 1 CPU
+* Around 8 GB storage
+
+Important: Always stop instances when not in use to avoid charges.
+
+---
+
+### Launch EC2 Instance (Steps)
+
+1. Login to [https://aws.amazon.com](https://aws.amazon.com)
+2. Open EC2 → Launch Instance
+3. Configure:
+
+* AMI: Amazon Linux or Ubuntu
+* Instance Type: Default
+* Key Pair: Create and download (.pem file)
+* Network: Default
+* Storage: Default
+* Summary: Launch
+
+Instance launch time is typically 3–4 minutes.
+
+---
+
+### Connect to EC2
+
+```bash
+ssh -i "key.pem" ec2-user@<public-ip>
+```
+
+Successful connection indicators:
+
+* Command prompt appears: ec2-user@ip
+* Welcome message is displayed
+
+---
+
+## SHELL / TERMINAL
+vi
+
+Example:
+
+```
+[ec2-user@ip-172-31-xx ~]$
+```
+
+Meaning:
+
+* ec2-user: username
+* ip: server IP
+* ~: home directory
+* $: normal user
+* #: root user
+vi 
+---
+
+## LINUX BASICS
+
+* Linux is a command-line based operating system
+* It is case sensitive
+* Commands must be typed exactly
+
+---
+
+## FILE AND DIRECTORY COMMANDS
+
+| Command | Purpose           | Example        |
+| ------- | ----------------- | -------------- |
+| touch   | create file       | touch file1    |
+| ls      | list files        | ls             |
+| mkdir   | create directory  | mkdir dir1     |
+| pwd     | current directory | pwd            |
+| cd      | change directory  | cd dir1        |
+| rm -f   | delete file       | rm -f file1    |
+| rm -rf  | delete directory  | rm -rf dir1    |
+| clear   | clear terminal    | clear          |
+| vi      | edit file         | vi file        |
+| cat     | view file         | cat file       |
+| cp      | copy file         | cp file1 file2 |
+| mv      | rename/move       | mv file1 file2 |
+
+---
+
+## DAY 3 — INTERMEDIATE LINUX
+
+### Multiple Files and Directories
+
+```bash
+touch f1 f2 f3
+mkdir d1 d2 d3
+```
+
+---
+
+### Important Commands
+
+| Command  | Use                       |
+| -------- | ------------------------- |
+| ls -lrt  | detailed sorted list      |
+| date     | display date and time     |
+| mkdir -p | create nested directories |
+| ls -a    | show hidden files         |
+| more     | view file (down only)     |
+| less     | view file (up/down)       |
+| head     | first lines               |
+| head -n <line number>  <file name> | for exact line numberhead -nn 
+| tail     | last lines                |
+| echo     | print text                |
+
+---
+
+### Redirection
+
+```bash
+ls > file
+ls >> file
+```
+
+---
+
+### Pipe
+
+```bash
+tail -2 file | head -1
+```
+
+---
+
+### grep
+
+```bash
+grep word file
+grep -i word file
+grep -r word *
+```
+
+---
+
+### wc
+
+```bash
+wc file
+wc -l file
+wc -w file
+wc -c file
+```
+
+---
+
+## LINUX FILE SYSTEM
+
+Root directory:
+
+```
+/
+```
+
+Important directories:
+
+* /home
+* /etc
+* /var
+* /tmp
+* /bin
+
+---
+
+## PERMISSIONS
+
+Example:
+
+```
+-rw-r--r--
+```
+
+Values:
+
+* r = 4
+* w = 2
+* x = 1
+
+Example:
+
+```
+644 = rw- r-- r--
+```
+
+---
+
+### chmod
+
+```bash
+chmod 755 file
+chmod -R 755 directory
+```
+
+---
+
+### chown
+
+```bash
+chown user:group file
+```
+
+---
+
+## PACKAGE MANAGEMENT
+
+| OS           | Tool |
+| ------------ | ---- |
+| Amazon Linux | yum  |
+| Ubuntu       | apt  |
+
+---
+
+### yum commands
+
+```bash
+yum search git
+yum install git
+yum remove git
+sudo yum update
+sudo yum upgrade
+```
+
+---
+
+## ADVANCED LINUX
+
+### Process Commands
+
+```bash
+ps aux
+top
+kill -9 PID
+```
+
+---
+
+### sed
+
+```bash
+sed 's/old/new/g' file
+sed -i 's/old/new/g' file
+```
+
+---
+
+### find
+
+```bash
+find / -name file
+find . -type f -name file
+```
+
+---
+
+### Networking
+
+```bash
+ping google.com
+netstat -lntp
+```
+
+Ports:
+
+* SSH: 22
+* HTTP: 80
+* HTTPS: 443
+
+---
+
+### SSH
+
+```bash
+ssh -i key.pem user@ip
+```
+
+---
+
+### SCP
+
+```bash
+scp file user@ip:/path
+scp -r dir user@ip:/path
+```
+
+---
+
+## USER MANAGEMENT
+
+| Task         | Command      |
+| ------------ | ------------ |
+| check user   | whoami       |
+| create user  | useradd user |
+| set password | passwd user  |
+| switch user  | su - user    |
+| root login   | sudo su -    |
+| delete user  | userdel user |
+
+---
+
+### Add sudo user
+
+```bash
+vi /etc/sudoers
+user ALL=(ALL) NOPASSWD: ALL
+```
+
+---
+
+## LINKS
+
+### Soft link
+
+```bash
+ln -s file link
+```
+
+### Hard link
+
+```bash
+ln file link
+```
+
+---
+
+## SYSTEM RESOURCES
+
+```bash
+free -m
+df -kh
+nproc
+uptime
+```
+
+---
+
+## SHELL SCRIPTING
+
+### Basic Script
+
+```bash
+#!/bin/bash
+echo "Hello"
+```
+
+Run:
+
+```bash
+sh script.sh
+```
+
+---
+
+### Variables
+
+```bash
+name="devops"
+echo $name
+```
+
+---
+
+### Command Arguments
+
+```bash
+echo $1 $2
+```
+
+---
+
+### Arithmetic
+
+```bash
+expr 5 + 2
+expr $a \* $b
+```
+
+---
+
+### If Condition
+
+```bash
+if [ $1 -eq 10 ]
+then
+ echo "true"
+else
+ echo "false"
+fi
+```
+
+---
+
+### Loops
+
+```bash
+for i in 1 2 3
+do
+ echo $i
+done
+```
+
+---
+
+### Read Input
+
+```bash
+read name
+```
+
+---
+
+## CRONTAB
+
+```bash
+crontab -e
+```
+
+Format:
+
+```
+* * * * * command
+```
+
+Example:
+
+```bash
+* * * * * echo "Hello" >> file
+```
+
+---
+
+## PASSWORDLESS SSH
+
+```bash
+ssh-keygen
+ssh-copy-id user@server
+```
+
+---
+
+## SERVICES
+
+```bash
+systemctl start sshd
+systemctl status sshd
+systemctl restart sshd
+```
+
+---
+
+## DEVOPS KEY CONCEPTS
+
+* Server, VM, EC2 are equivalent
+* Automation using scripts
+* Monitoring using commands
+* Remote access using SSH
+* Scheduling using cron
+
+---
+
+## FLASHCARDS (REVISION)
+
+### EC2
+
+Q: What is EC2?
+A: Virtual server in AWS
+
+---
+
+### SSH
+
+Q: SSH command?
+A:
+
+```bash
+ssh -i key.pem user@ip
+```
+
+---
+
+### File creation
+
+Q: Create file?
+A:
+
+```bash
+touch file
+```
+
+---
+
+### Delete directory
+
+Q: Delete directory?
+A:
+
+```bash
+rm -rf dir
+```
+
+---
+
+### Current directory
+
+Q: Command?
+A:
+
+```bash
+pwd
+```
+
+---
+
+### View file
+
+Q: View file content?
+A:
+
+```bash
+cat file
+```
+
+---
+
+### Permissions
+
+Q: rwx values?
+A: r=4, w=2, x=1
+
+---
+
+### Change permission
+
+```bash
+chmod 755 file
+```
+
+---
+
+### Process list
+
+```bash
+ps aux
+```
+
+---
+
+### Kill process
+
+```bash
+kill -9 PID
+```
+
+---
+
+### Search text
+
+```bash
+grep word file
+```
+
+---
+
+### Disk usage
+
+```bash
+df -kh
+```
+
+---
+
+### Memory usage
+
+```bash
+free -m
+```
+
+---
+
+### Install package
+
+```bash
+yum install git
+```
+
+---
+
+### Cron job
+
+```bash
+* * * * * command
+```
+
+---
+
+### Variable
+
+```bash
+name="dev"
+echo $name
+```
+
+---
+
+### If condition
+
+```bash
+if [ $1 -eq 5 ]
+```
+
+---
+
+### Loop
+
+```bash
+for i in 1 2 3
+```
+
+---
+
+### SCP
+
+```bash
+scp file user@ip:/path
+```
+
+---
+
+### Find file
+
+```bash
+find / -name file
+```
+
+---
+
+### Sed replace
+
+```bash
+sed -i 's/old/new/g' file
+```
+
+---
+
+### Service restart
+
+```bash
+systemctl restart sshd
+```
+
+---
+
+### Check OS
+
+```bash
+cat /etc/os-release
+```
+
+---
+
+### Exit status
+
+```bash
+echo $?
+```
+
+---
+
+## FINAL SUMMARY
+
+You have covered:
+
+* AWS EC2 basics
+* Linux fundamentals
+* File system and permissions
+* Networking and SSH
+* User management
+* Shell scripting
+* Automation using cron
+
+---
