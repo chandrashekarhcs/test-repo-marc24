@@ -1,6 +1,4 @@
-Got it — you want a **clean, copy-friendly version** (no stars, no emojis, no fancy formatting). Here it is:
 
----
 
 DEVOPS + LINUX CHEAT SHEET PDF
 Download: sandbox:/mnt/data/devops_linux_cheatsheet.pdf
